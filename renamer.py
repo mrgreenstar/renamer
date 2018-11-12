@@ -17,7 +17,7 @@ def removePart(name, path = os.getcwd()):
     print("Content:")
     i = 1
     for oneFile in allFiles:
-        # .DS_Store - файл, автоматически создаваемый Finder'ом на Mac Os
+        # .DS_Store - file which MacOS creates
         if os.path.isfile(oneFile) and oneFile != ".DS_Store":
             print("{}. {}".format(i, oneFile))
             i += 1
