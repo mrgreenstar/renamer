@@ -2,17 +2,19 @@
 import os
 import sys
 import mp3_tagger
+
 '''
-    Для быстрого удаления какой-либо части в названии трека.
-    Добавлено удаление этой части из ID3 тегов в mp3 файлах.
-    Первый параметр – часть, которую нужно удалить из названия всех файлов.
-    Второй параметр - путь к папке, в которой расположены файлы.
+    Script for fast deleting part of the song name.
+    Script deletes part from ID3 tags.
+    First param - str, which must be deleted from the files name.
+    Second param - path to the folred.
 '''
+
 def removePart(name, path = os.getcwd()):
     allFiles = os.listdir(path)
     os.chdir(path)
-    print("\nТекущая директория: ", os.getcwd())
-    print("Содержимое:")
+    print("\nCurrent directory: ", os.getcwd())
+    print("Content:")
     i = 1
     for oneFile in allFiles:
         # .DS_Store - файл, автоматически создаваемый Finder'ом на Mac Os
@@ -29,7 +31,7 @@ def removePart(name, path = os.getcwd()):
                     mp3 = mp3_tagger.MP3File(oneFile)
                     mp3.comment = ""
                     mp3.song = newName.split(".mp3")[0]
-                    print("Имя трека:", mp3.song)
+                    print("Song name:", mp3.song)
                     mp3.save()
                 except FileNotFoundError:
                     pass
